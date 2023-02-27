@@ -12,10 +12,13 @@ def testGreaterThan10(x):
 
 
 def getSquared(a):
-    list = []
+    if not isinstance(a, list):
+        raise ValueError("Can only handle lists!")
+    
+    final_list = []
     for element in a:
-        list.append(element**2)
-    return list
+        final_list.append(element**2)
+    return final_list
 
 getSquared([1,2])
 testGreaterThan10(9)

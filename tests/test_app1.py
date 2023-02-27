@@ -25,10 +25,17 @@ class TestSuite(unittest.TestCase):
             self.assertIsNone(actualValue)
 
     def test_squared(self):
-        list = [1,2,3,4]
+        sample_list = [1,2,3,4]
         expectedValue = [1,4,9,16]
-        actualValue = tasks.getSquared(list)
+        actualValue = tasks.getSquared(sample_list)
         self.assertListEqual(actualValue, expectedValue)
+
+        with self.subTest(key="input type"):
+            with self.assertRaises(ValueError):
+                dict_return = tasks.getSquared({'key':0})
+
+            with self.assertRaises(ValueError):
+                int_return = tasks.getSquared(2)
 
 if __name__ == '__main__':
     unittest.main()
