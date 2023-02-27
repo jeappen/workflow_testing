@@ -20,6 +20,7 @@ def getSquared(a):
         final_list.append(element**2)
     return final_list
 
-getSquared([1,2])
-testGreaterThan10(9)
-getExponential(2,3)
+if __name__ == "__main__":
+    getSquared([1,2])
+    testGreaterThan10(9)
+    getExponential(2,3)
