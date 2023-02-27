@@ -15,6 +15,7 @@ import os
 class TestSuite(unittest.TestCase):
     def setUp(self):
         self.student1 = tasks.Student('John','21', 3.4)
+        self.student2 = tasks.Student('John','21', 2.9)
         if os.path.exists(os.getcwd()+r'\hello.txt'):
             os.remove(os.getcwd()+r'\hello.txt')
 
@@ -23,6 +24,13 @@ class TestSuite(unittest.TestCase):
         with self.subTest(key="Graduation Test"):
             expectedValue = "Congrats on your graduation"
             actualValue = self.student1.graduate()
+            self.assertEqual(expectedValue, actualValue, "Not matching strings")
+
+    def test_no_graduation(self):
+
+        with self.subTest(key="Not Graduation Test"):
+            expectedValue = "Cannot graduate this semester"
+            actualValue = self.student2.graduate()
             self.assertEqual(expectedValue, actualValue, "Not matching strings")
 
     def test_textFile(self):
@@ -34,6 +42,7 @@ class TestSuite(unittest.TestCase):
 
     def tearDown(self):
         del self.student1
+        del self.student2
         if os.path.exists(os.getcwd() + r'\hello.txt'):
             os.remove(os.getcwd() + r'\hello.txt')
 
