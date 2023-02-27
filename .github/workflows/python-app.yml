@@ -3,7 +3,7 @@
 
 name: Python application
 
-on: [push]
+on: [push, workflow_dispatch]
 
 jobs:
   build:
@@ -32,4 +32,4 @@ jobs:
         pytest
     - name: Build coverage file
       run: |
-        pytest --cache-clear --cov=src/ tests/ 
+        pytest --cache-clear --cov=src/ tests/ --cov-report=html
